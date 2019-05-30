@@ -50,8 +50,6 @@ try {
     }
 
     echo "<b>Ошибка подключения: </b>" . $exception->getMessage();
-    echo "<b>Ошибка подключения: </b>" . $exception->getCode();
-
     die;
 }
 ?>

@@ -14,17 +14,24 @@ if ($_SESSION['login_db'] != null and $_SESSION['pass_db'] != null) { ?>
     <title>Подключение к БД</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript">
+
         function sendAuthData() {
             login_db = $("input[name='login']").val();
             pass_db = $("input[name='password']").val();
-            $.ajax({
-                type: "POST",
-                url: "service_bd.php",
-                data: {login_db: login_db, pass_db: pass_db},
-                success: function (data) {
-                    $("#response").html(data);
-                }
-            });
+
+            if (login_db == "" | pass_db == ""){
+                alert("Заполните вводимые данные!");
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: "service_bd.php",
+                    data: {login_db: login_db, pass_db: pass_db},
+                    success: function (data) {
+                        $("#response").html(data);
+                    }
+                });
+            }
+
             return false;
         }
     </script>
